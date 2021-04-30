@@ -7,12 +7,13 @@
     tools:context=".SettingActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:src="@drawable/left"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="8dp" />
+        app:layout_constraintBottom_toTopOf="@id/divide1"
+        android:layout_marginLeft="24dp" />
 
     <TextView
         android:id="@+id/setting"
@@ -22,9 +23,9 @@
         android:textSize="24sp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/divide1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <View
@@ -32,8 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="#f5f5f5"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/setting"/>
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -57,28 +58,30 @@
         android:layout_height="wrap_content"
         android:text="基本信息"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_margin="15dp"
+        android:textSize="16sp"
+        android:layout_marginLeft="4dp"
         app:layout_constraintStart_toStartOf="@id/guideLeft"
-        app:layout_constraintTop_toBottomOf="@id/divide1"/>
+        app:layout_constraintTop_toBottomOf="@id/divide1"
+        app:layout_constraintBottom_toTopOf="@id/divide2"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:src="@drawable/right"
-        android:layout_margin="15dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintBottom_toTopOf="@id/divide2"
         app:layout_constraintTop_toBottomOf="@id/divide1"
         app:layout_constraintEnd_toStartOf="@id/guideRight"/>
 
     <View
         android:id="@+id/divide2"
         android:layout_width="0dp"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#f5f5f5"
         app:layout_constraintStart_toEndOf="@id/guideLeft"
         app:layout_constraintEnd_toStartOf="@id/guideRight"
-        app:layout_constraintTop_toBottomOf="@id/basicInfo"
-        android:layout_marginTop="15dp" />
+        app:layout_constraintTop_toBottomOf="@id/divide1"
+        android:layout_marginTop="50dp" />
 
 
 
@@ -88,40 +91,43 @@
         android:layout_height="wrap_content"
         android:text="账号与安全"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_margin="15dp"
+        android:textSize="16sp"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintBottom_toTopOf="@id/divide3"
         app:layout_constraintStart_toStartOf="@id/guideLeft"
         app:layout_constraintTop_toBottomOf="@id/divide2"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:src="@drawable/right"
-        android:layout_margin="15dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintBottom_toTopOf="@id/divide3"
         app:layout_constraintTop_toBottomOf="@id/divide2"
         app:layout_constraintEnd_toStartOf="@id/guideRight"/>
 
     <View
         android:id="@+id/divide3"
         android:layout_width="0dp"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#f5f5f5"
         app:layout_constraintStart_toEndOf="@id/guideLeft"
         app:layout_constraintEnd_toStartOf="@id/guideRight"
-        app:layout_constraintTop_toBottomOf="@id/account"
-        android:layout_marginTop="15dp"/>
+        app:layout_constraintTop_toBottomOf="@id/divide2"
+        android:layout_marginTop="50dp"/>
 
 
     <TextView
         android:id="@+id/darkMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="账号与安全"
+        android:text="夜间模式"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_margin="15dp"
+        android:textSize="16sp"
+        android:layout_marginLeft="4dp"
         app:layout_constraintStart_toStartOf="@id/guideLeft"
-        app:layout_constraintTop_toBottomOf="@id/divide3"/>
+        app:layout_constraintTop_toBottomOf="@id/divide3"
+        app:layout_constraintBottom_toTopOf="@id/divide4"/>
 
     <Switch
         android:id="@+id/sMoRen"
@@ -131,19 +137,208 @@
         android:thumb="@drawable/thumb"
         android:track="@drawable/track"
         app:layout_constraintTop_toBottomOf="@id/divide3"
+        app:layout_constraintBottom_toTopOf="@id/divide4"
         app:layout_constraintEnd_toStartOf="@id/guideRight"
-        android:layout_margin="15dp"/>
+        android:layout_marginRight="4dp"/>
 
     <View
         android:id="@+id/divide4"
         android:layout_width="0dp"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#f5f5f5"
         app:layout_constraintStart_toEndOf="@id/guideLeft"
         app:layout_constraintEnd_toStartOf="@id/guideRight"
-        app:layout_constraintTop_toBottomOf="@id/darkMode"
-        android:layout_marginTop="15dp"/>
+        app:layout_constraintTop_toBottomOf="@id/divide3"
+        android:layout_marginTop="50dp"/>
 
 
+    <TextView
+        android:id="@+id/readeSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="阅读设置"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintStart_toStartOf="@id/guideLeft"
+        app:layout_constraintTop_toBottomOf="@id/divide4"
+        app:layout_constraintBottom_toTopOf="@id/divide5"/>
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/right"
+        android:layout_marginRight="4dp"
+        app:layout_constraintTop_toBottomOf="@id/divide4"
+        app:layout_constraintEnd_toStartOf="@id/guideRight"
+        app:layout_constraintBottom_toTopOf="@id/divide5"/>
+
+    <View
+        android:id="@+id/divide5"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#f5f5f5"
+        app:layout_constraintStart_toEndOf="@id/guideLeft"
+        app:layout_constraintEnd_toStartOf="@id/guideRight"
+        app:layout_constraintTop_toBottomOf="@id/divide4"
+        android:layout_marginTop="50dp"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintStart_toEndOf="@id/guideLeft"
+        app:layout_constraintTop_toBottomOf="@id/divide5"
+        app:layout_constraintBottom_toTopOf="@id/divide6">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="推送设置"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开启后，书籍更新、客服回复等消息会及时通知"
+            android:textSize="10sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="未开启"
+        android:textSize="10sp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintBottom_toTopOf="@id/divide6"
+        app:layout_constraintTop_toBottomOf="@id/divide5"
+        app:layout_constraintEnd_toStartOf="@id/pushImage"/>
+
+    <ImageView
+        android:id="@+id/pushImage"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/right"
+        android:layout_marginRight="4dp"
+        app:layout_constraintTop_toBottomOf="@id/divide5"
+        app:layout_constraintBottom_toTopOf="@id/divide6"
+        app:layout_constraintEnd_toStartOf="@id/guideRight"/>
+
+    <View
+        android:id="@+id/divide6"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#f5f5f5"
+        app:layout_constraintStart_toEndOf="@id/guideLeft"
+        app:layout_constraintEnd_toStartOf="@id/guideRight"
+        app:layout_constraintTop_toBottomOf="@id/divide5"
+        android:layout_marginTop="50dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清理缓存"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintStart_toStartOf="@id/guideLeft"
+        app:layout_constraintTop_toBottomOf="@id/divide6"
+        app:layout_constraintBottom_toTopOf="@id/divide7"/>
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/right"
+        android:layout_marginRight="4dp"
+        app:layout_constraintTop_toBottomOf="@id/divide6"
+        app:layout_constraintEnd_toStartOf="@id/guideRight"
+        app:layout_constraintBottom_toTopOf="@id/divide7"/>
+
+    <View
+        android:id="@+id/divide7"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#f5f5f5"
+        app:layout_constraintStart_toEndOf="@id/guideLeft"
+        app:layout_constraintEnd_toStartOf="@id/guideRight"
+        app:layout_constraintTop_toBottomOf="@id/divide6"
+        android:layout_marginTop="50dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="隐私设置"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintStart_toStartOf="@id/guideLeft"
+        app:layout_constraintTop_toBottomOf="@id/divide7"
+        app:layout_constraintBottom_toTopOf="@id/divide8"/>
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/right"
+        android:layout_marginRight="4dp"
+        app:layout_constraintTop_toBottomOf="@id/divide7"
+        app:layout_constraintEnd_toStartOf="@id/guideRight"
+        app:layout_constraintBottom_toTopOf="@id/divide8"/>
+
+    <View
+        android:id="@+id/divide8"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#f5f5f5"
+        app:layout_constraintTop_toBottomOf="@id/divide7"
+        android:layout_marginTop="50dp"/>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关于七猫免费小说"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintStart_toStartOf="@id/guideLeft"
+        app:layout_constraintTop_toBottomOf="@id/divide8"
+        app:layout_constraintBottom_toTopOf="@id/divide9"/>
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/right"
+        android:layout_marginRight="4dp"
+        app:layout_constraintTop_toBottomOf="@id/divide8"
+        app:layout_constraintEnd_toStartOf="@id/guideRight"
+        app:layout_constraintBottom_toTopOf="@id/divide9"/>
+
+    <View
+        android:id="@+id/divide9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#f5f5f5"
+        app:layout_constraintTop_toBottomOf="@id/divide8"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="《用户协议》、《隐私政策》、《儿童个人信息保护规则》"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="10sp"
+        android:textColor="#F6D849"
+        android:layout_marginBottom="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
