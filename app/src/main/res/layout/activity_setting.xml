@@ -124,10 +124,14 @@
         app:layout_constraintTop_toBottomOf="@id/divide3"/>
 
     <Switch
-        app:layout_constraintTop_toBottomOf="@id/divide3"
-        app:layout_constraintEnd_toStartOf="@id/guideRight"
+        android:id="@+id/sMoRen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:switchMinWidth="20dp"
+        android:thumb="@drawable/thumb"
+        android:track="@drawable/track"
+        app:layout_constraintTop_toBottomOf="@id/divide3"
+        app:layout_constraintEnd_toStartOf="@id/guideRight"
         android:layout_margin="15dp"/>
 
     <View
