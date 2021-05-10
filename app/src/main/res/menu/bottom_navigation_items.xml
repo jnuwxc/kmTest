@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/bookShelf"
+        android:title="书架"
+        android:icon="@drawable/book_shelf_selector"
+        />
+    <item android:id="@+id/bookStore"
+        android:title="书城"
+        android:icon="@drawable/book_store"
+        />
+
+    <item android:id="@+id/classification"
+        android:title="分类"
+        android:icon="@drawable/classification"
+        />
+
+    <item android:id="@+id/my"
+        android:title="我的"
+        android:icon="@drawable/my"
+        />
+
+</menu>
