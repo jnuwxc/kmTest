@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KmTest">
         <activity android:name=".SettingActivity"
-            android:theme="@style/Theme.Setting"></activity>
+            android:theme="@style/Theme.Setting"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
