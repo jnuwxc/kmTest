@@ -5,8 +5,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.ViewCompat;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowInsetsController;
+import android.widget.Button;
+import android.widget.Switch;
 
 public class SettingActivity extends AppCompatActivity {
 
