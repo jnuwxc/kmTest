@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/searchItem"
+        android:title="搜索"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/historyItem"
+        android:title="阅读历史"
+        android:icon="@drawable/ic_history"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/bookManagerItem"
+        android:title="书架管理"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/importBookItem"
+        android:title="导入书籍"
+        app:showAsAction="never"/>
+
+</menu>

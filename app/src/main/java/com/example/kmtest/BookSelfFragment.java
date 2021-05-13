@@ -14,18 +14,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 
 public class BookSelfFragment extends Fragment {
 
     private MyService.DownloadBinder downloadBinder;
+    private int refreshCount;
     private ArrayList<String> itemNames = new ArrayList<>();
 
     @Nullable
@@ -34,55 +37,23 @@ public class BookSelfFragment extends Fragment {
         View view = getLayoutInflater().inflate(R.layout.fragment_book_shelf, container, false);
         Activity activity = getActivity();
 
+        refreshCount = 0;
+        TextView refreshText = view.findViewById(R.id.refreshText);
+        SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.mainRefresh);
+        swipeRefreshLayout.setOnRefreshListener(()->{
+            refreshCount++;
+            String string = "这是第" + refreshCount + "次刷新";
+            refreshText.setText(string);
+            swipeRefreshLayout.setRefreshing(false);
+        });
+
         initItemNames();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(activity);
         RecyclerView recyclerView = view.findViewById(R.id.bookShelfRecyclerView);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new BookShelfAdapter(itemNames));
-
-//        Button startServiceBtn = view.findViewById(R.id.startService);
-//        Button bindServiceBtn = view.findViewById(R.id.bindService);
-//        Button unbindServiceBtn = view.findViewById(R.id.unBindService);
-//        Button stopServiceBtn = view.findViewById(R.id.stopService);
-//        Button foregroundBtn = view.findViewById(R.id.foregroundService);
-//
-//        Connection connection = new Connection();
-//
-//        startServiceBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(activity, MyService.class);
-//            activity.startService(intent);
-//        });
-//        bindServiceBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(activity, MyService.class);
-//            activity.bindService(intent, connection, Context.BIND_AUTO_CREATE);
-//        });
-//        unbindServiceBtn.setOnClickListener(v -> {
-//            getContext().unbindService(connection);
-//        });
-//        stopServiceBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(getContext(), MyService.class);
-//            getContext().stopService(intent);
-//        });
-//        foregroundBtn.setOnClickListener(v -> {
-//
-//        });
         return view;
     }
-
-//    class Connection implements ServiceConnection {
-//
-//        @Override
-//        public void onServiceConnected(ComponentName name, IBinder service) {
-//            downloadBinder = (MyService.DownloadBinder) service;
-//            downloadBinder.startDownload();
-//            downloadBinder.getProgress();
-//        }
-//
-//        @Override
-//        public void onServiceDisconnected(ComponentName name) {
-//
-//        }
-//    }
 
     private void initItemNames() {
         itemNames.add("安卓UI练习");

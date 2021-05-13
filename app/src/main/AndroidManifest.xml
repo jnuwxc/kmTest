@@ -28,7 +28,8 @@
             android:name=".SettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Setting" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:label="七猫免费小说">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
