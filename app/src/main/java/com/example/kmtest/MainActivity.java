@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-
-
         replaceFragment(new BookSelfFragment());
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);

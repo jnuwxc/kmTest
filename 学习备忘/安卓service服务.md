@@ -71,5 +71,32 @@ public class HelloIntentService extends IntentService {
 
 ### 前台service
 
-未完待续。。。。
+后台服务容易在资源不足时被安卓系统回收，所以当程序执行一些需用用户注意到的服务时，考虑使用前台服务，如在通知栏显示播放音乐的相关信息。前台服务会显示在通知栏中，所以和通知一样，也需要优先级，前台服务应使用`PRIORITY_LOW`或更高优先级的通知栏通知。
 
+前台服务在28以上的版本必须请求（普通）权限
+
+`<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>`
+
+创建前台service的代码示例：
+
+```java
+Intent notificationIntent = new Intent(this, ExampleActivity.class);
+PendingIntent pendingIntent =
+        PendingIntent.getActivity(this, 0, notificationIntent, 0);
+
+Notification notification =
+          new Notification.Builder(this, CHANNEL_DEFAULT_IMPORTANCE)
+    .setContentTitle(getText(R.string.notification_title))
+    .setContentText(getText(R.string.notification_message))
+    .setSmallIcon(R.drawable.icon)
+    .setContentIntent(pendingIntent)
+    .setTicker(getText(R.string.ticker_text))
+    .build();
+
+// Notification ID cannot be 0.
+startForeground(ONGOING_NOTIFICATION_ID, notification);
+```
+
+若想主动关闭前台service，直接使用stopService()即可。
+
+谨慎使用前台服务。

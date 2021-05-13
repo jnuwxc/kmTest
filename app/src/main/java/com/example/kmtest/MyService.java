@@ -1,10 +1,17 @@
 package com.example.kmtest;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.widget.Toast;
+
+import androidx.core.app.NotificationCompat;
 
 public class MyService extends Service {
 
@@ -21,6 +28,20 @@ public class MyService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Toast.makeText(MyService.this, "service start", Toast.LENGTH_SHORT).show();
+
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("my_service", "前台service", NotificationManager.IMPORTANCE_HIGH);
+            manager.createNotificationChannel(channel);
+        }
+        Intent intent1 = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent1, 0);
+        Notification notification = new NotificationCompat.Builder(this, "my_service")
+                .setContentTitle("this is content title")
+                .setContentText("this is content text")
+                .setContentIntent(pendingIntent)
+                .build();
+        startForeground(1, notification);
         return super.onStartCommand(intent, flags, startId);
     }
 
