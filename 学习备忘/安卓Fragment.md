@@ -23,7 +23,7 @@ Fragment必须依赖Activity进行工作，在Activity中可以可以使用 `fin
 
 下面来具体聊聊Fragment管理器。每个 `FragmentActivity` 及其子类（如 `AppCompatActivity`）都可以通过 `getSupportFragmentManager()` 方法访问 `FragmentManager`，然后继续后续操作。
 
-> 突然联想到，activity默认继承的AppCompatActivity是继承自FragmentActivity，继续往上会到Activity类，最后会到Context抽象类，明白为啥activity可以作为context使用了吧。
+> 突然联想到，activity默认继承的AppCompatActivity是继承自FragmentActivity，继续往上会到Activity类，最后会到Context抽象类，明白为啥activity可以作为context使用了吧。但是Fragment可不是Context的子类，Fragment没用父类。
 
 `FragmentManager` 管理 Fragment 返回堆栈。在运行时，`FragmentManager` 可以执行添加或移除 Fragment 等返回堆栈操作来响应用户互动。每一组更改作为一个事务（称为 `FragmentTransaction`）一起提交。
 
