@@ -4,14 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.ViewCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowInsetsController;
+import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 
-public class SettingActivity extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +33,33 @@ public class SettingActivity extends AppCompatActivity {
             // API30以下
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+
+        ImageView backup = findViewById(R.id.backUp);
+        backup.setOnClickListener(v -> {
+            finish();
+        });
+
+        TextView userAgent = findViewById(R.id.settingUserAgent);
+        userAgent.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingActivity.this, WebViewActivity.class);
+            intent.putExtra("title", "用户协议");
+            intent.putExtra("url", "https://www.baidu.com");
+            startActivity(intent);
+        });
+        TextView  privacyPolicy = findViewById(R.id.privacyPolicy);
+        privacyPolicy.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingActivity.this, WebViewActivity.class);
+            intent.putExtra("title", "隐私政策");
+            intent.putExtra("url", "https://www.baidu.com");
+            startActivity(intent);
+        });
+        TextView childrenP = findViewById(R.id.childrenPersonalInformationProtectionRules);
+        childrenP.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingActivity.this, WebViewActivity.class);
+            intent.putExtra("title", "儿童个人信息保护政策");
+            intent.putExtra("url", "https://www.baidu.com");
+            startActivity(intent);
+        });
     }
+
 }
