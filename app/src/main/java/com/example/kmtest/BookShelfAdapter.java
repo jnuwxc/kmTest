@@ -9,7 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kmtest.components.BroadcastActivity;
+import com.example.kmtest.broadcast.BroadcastActivity;
+import com.example.kmtest.fragmentTest.NewsActivity;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,9 @@ public class BookShelfAdapter extends RecyclerView.Adapter<BookShelfAdapter.View
                     Intent intent = new Intent(parent.getContext(), BroadcastActivity.class);
                     parent.getContext().startActivity(intent);
                     break;
+                case "安卓Fragment练习":
+                    Intent intent1 = new Intent(parent.getContext(), NewsActivity.class);
+                    parent.getContext().startActivity(intent1);
                 default:
                     break;
             }

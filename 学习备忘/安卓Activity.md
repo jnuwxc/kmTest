@@ -205,3 +205,96 @@ singleTask和singleInstance为一类，指定为这两种模式的Activity 只�
 没有对应的的launchMode
 
 把我看懵了。。。。。这三个+启动模式的四个，有点难理解。
+
+## Application相关
+
+### Application类
+
+参考资料：
+
+[Android：全面解析 熟悉而陌生 的Application类使用 - 简书 (jianshu.com)](https://www.jianshu.com/p/f665366b2a47)
+
+[Application  | Android Developers (google.cn)](https://developer.android.google.cn/reference/kotlin/android/app/Application?hl=en)
+
+第一篇写的很简单易懂，也很全面，以至于我感觉没有什么需要写的了，进行一下总结，然后补充一点没提到的部分吧
+
+**总结**
+
+* 定义：维护全局应用程序状态的基类，继承自Context类
+* 创建：每个Android App运行时，会首先自动创建Application 类并实例化 Application 对象，且只有一个。
+* 生命周期：和整个安卓APP的生命周期相同，是最长的
+* 常用方法：
+    * `onCreate()`：`Application` 实例创建时调用，初始化应用程序级别的资源、设置全局恭喜数据。默认实现为空
+    * `onConfigurationChanged()`：应用程序配置信息改变时调用，监听配置信息的改变。
+    * `onTrimMemory()`：通知应用程序当前内存使用情况（以内存级别进行识别），针对内存清空程序进行相应的操作，如释放相关资源，降低自身被杀死的可能。Android 4以后可以使用
+    * `onLowMemory()`：监听系统整体内存较低的时刻，在Android 4以前使用，之后使用`onTrimMemory`。
+    * `registerActivityLifecycleCallbacks()`：注册对应用程序内所有Activity的生命周期监听，内包含各个生命周期的回调。当然还有一个取消监听的un方法。
+    * ` onTerminate()`：程序结束时调用，但仅可用于虚拟机。默认实现为空。
+* 使用方法：自定义Applicatio的子类继承，在清单文件中使用`android:name`进行注册，使用。
+
+**补充方法**
+
+`getProcessName()`：返回当前进程的名称，默认进程名称与其包名称相同。在API28以后增加。
+
+```java
+public static String getProcessName() {
+	return ActivityThread.currentProcessName();
+}
+```
+
+**注意**
+
+多进程App中不止一个Application实例，以上讨论仅仅是单进程App。
+
+文章一中提到，Application是单例模式，这个有待证实，看Application类的源码，是没有针对单例处理的，而是由系统设置Application只有一个，另外Application是有public的构造函数的，但是不要去new使用。
+
+### `<application>`标签
+
+官方文档：[  | Android 开发者  | Android Developers (google.cn)](https://developer.android.google.cn/guide/topics/manifest/application-element)
+
+应用的声明。此元素包含用于声明每个应用组件的子元素，并且具有会影响所有组件的属性。被包含在清单文件的`<manifest>`标签下，包含的标签较多，选几个重要的记一下：
+
+`android:banner`
+
+
+一种可绘制资源，可为其关联项提供扩展图形横幅。它可以与 `<application>` 标记一起使用，为所有应用 Activity 提供默认横幅；也可以与`<activity>`标记一起使用，为特定 Activity 提供横幅。
+
+`android:debuggable`
+
+是否可以调试应用（即使在处于用户模式的设备上运行时），默认为false。
+
+`android:enabled`
+
+Android 系统是否可以实例化应用的组件，一般用来指定是否启用该组件，默认为true。
+
+`android:hardwareAccelerated`
+
+是否应为此应用中的所有 Activity 和视图启用硬件加速渲染，在API14以上默认关闭，以下默认开启。若开启，请对此进行测试，保证可以正确渲染。
+
+`android:icon`
+
+整个应用的图标，以及每个应用组件的默认图标。必须将此属性设为对包含图片的可绘制资源（例如 `"@drawable/icon"`）的引用。没有默认图标。
+
+`android:label`
+
+整个应用的用户可读标签，以及每个应用组件的默认标签。应将标签设为对字符串资源的引用，以便可以像界面中的其他字符串一样进行本地化。
+
+`android:logo`
+
+整个应用的徽标，以及 Activity 的默认徽标。必须将此属性设为对包含图片的可绘制资源（例如 `"@drawable/logo"`）的引用。没有默认徽标。注意区分这个和icon属性，logo一般是用来作为ActionBar上的应用标志，而icon则是指app在桌面上显示的图标。
+
+`android:name`
+
+为应用实现的 `Application` 子类的完全限定名称。应用进程启动后，此类会在应用的所有组件之前进行实例化。
+
+该子类是可选的；大多数应用都不需要它。在没有子类的情况下，Android 会使用 Application 基类的实例。
+
+`android:theme`
+
+对样式资源的引用，用于为应用中的所有 Activity 定义默认主题背景。各个 Activity 可以通过设置自己的 `theme` 属性来替换默认值。
+
+`android:taskAffinity`
+
+上面启动模式中有讲，用来设置应用中默认的Activity粘性（粘性一词用得很奇妙）
+
+最后，`<application>`标签的很多属性和Activity标签和其它组件的属性有相同之处，可以触类旁通。

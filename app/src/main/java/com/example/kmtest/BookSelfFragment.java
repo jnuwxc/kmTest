@@ -48,19 +48,19 @@ public class BookSelfFragment extends Fragment {
             switch (item.getItemId()){
                 case R.id.searchItem:
                     Toast.makeText(activity, "你点击了搜索按钮", Toast.LENGTH_SHORT).show();
-                    break;
+                    return true;
                 case R.id.historyItem:
                     Toast.makeText(activity, "你点击了阅读历史按钮", Toast.LENGTH_SHORT).show();
-                    break;
+                    return true;
                 case R.id.bookManagerItem:
                     Toast.makeText(activity, "你点击了书籍管理按钮", Toast.LENGTH_SHORT).show();
-                    break;
+                    return true;
                 case R.id.importBookItem:
                     Toast.makeText(activity, "你点击了导入书籍按钮", Toast.LENGTH_SHORT).show();
-                    break;
+                    return true;
                 default:
+                    return false;
             }
-            return super.onOptionsItemSelected(item);
         });
 
         refreshCount = 0;
@@ -86,7 +86,7 @@ public class BookSelfFragment extends Fragment {
         itemNames.add("安卓activity练习");
         itemNames.add("安卓服务练习");
         itemNames.add("安卓广播练习");
-        itemNames.add("测试");
+        itemNames.add("安卓Fragment练习");
         itemNames.add("测试");
         itemNames.add("测试");
         itemNames.add("测试");

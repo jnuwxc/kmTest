@@ -40,3 +40,49 @@ fragmentManager.beginTransaction()
 
 在本例中，`ExampleFragment` 会替换当前在由 `R.id.fragment_container` ID 标识的布局容器中的 Fragment（如果有）；`setReorderingAllowed(true)`可优化事务中涉及的 Fragment 的状态变化，以使动画和过渡正常运行；调用 `addToBackStack()`会将事务提交到返回堆栈，如果您在执行移除 Fragment 的事务时未调用 `addToBackStack()`，则提交事务时会销毁已移除的 Fragment，用户无法返回到该 Fragment。如果您在移除某个 Fragment 时调用了 `addToBackStack()`，则该 Fragment 只会 `STOPPED`，稍后当用户返回时它会 `RESUMED`。
 
+### 在Fragment使用应用栏
+
+有时需要仅在某个Fragment中使用应用栏，而不是在整个Activity中通用的应用栏，可以在Fragment对应的布局中使用`toolbar`。使用步骤如下：
+
+1. 在XML添加toolbar
+
+```xml
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/myToolbar"
+    app:title="title"
+    ... />
+```
+
+2. `Toolbar` 便捷方法 `inflateMenu(int)` 将菜单资源的 ID 作为参数。如需将 XML 菜单资源膨胀到工具栏中，请将 `resId` 传递给此方法，如以下示例所示：
+
+```java
+public class ExampleFragment extends Fragment {
+    ...
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        ...
+        viewBinding.myToolbar.inflateMenu(R.menu.sample_menu);
+    }
+}
+```
+
+3. 处理点击事件：
+
+```java
+viewBinding.myToolbar.setOnMenuItemClickListener(item -> {
+    switch (item.getItemId()) {
+        case R.id.action_settings:
+            // Navigate to settings screen
+            return true;
+        case R.id.action_done:
+            // Save profile changes
+            return true;
+        default:
+            return false;
+    }
+});
+```
+
+
+

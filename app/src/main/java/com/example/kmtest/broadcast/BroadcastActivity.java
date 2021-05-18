@@ -1,11 +1,13 @@
-package com.example.kmtest.components;
+package com.example.kmtest.broadcast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -25,6 +27,10 @@ public class BroadcastActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_broadcast);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            Log.d(TAG, "onCreate: " + Application.getProcessName());
+        }
+
         timeChangeReceiver = new TimeChangeReceiver();
         textView = findViewById(R.id.broadcastText);
         IntentFilter intentFilter = new IntentFilter();

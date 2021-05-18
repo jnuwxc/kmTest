@@ -1,26 +1,30 @@
 package com.example.kmtest;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * APP主activity
+ * @author wxc
+ * @date 2021.5.17
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+
+    /**
+     * activity创建的回调，处理UI的初始化工作
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // bottomNavigation点击事件，替换相应的fragment
                 switch (item.getItemId()){
                     case R.id.bookShelf:
                         replaceFragment(new BookSelfFragment());
@@ -55,12 +60,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * 将传入的fragment替换到mainFragment中
+     * @param fragment 要显示的 fragment
+     */
     private void replaceFragment(Fragment fragment){
-        Log.d(TAG, "replaceFragment: ");
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.mainFragment, fragment);
         transaction.commit();
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.kmtest.components;
+package com.example.kmtest.broadcast;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
