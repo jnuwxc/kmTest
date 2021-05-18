@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kmtest.broadcast.BroadcastActivity;
 import com.example.kmtest.fragmentTest.NewsActivity;
+import com.example.kmtest.serviceTest.ServiceActivity;
 
 import java.util.ArrayList;
 
@@ -34,13 +35,17 @@ public class BookShelfAdapter extends RecyclerView.Adapter<BookShelfAdapter.View
                 case "安卓UI练习":
                     Log.d(TAG, "onCreateViewHolder: 安卓UI练习" );
                     break;
+                case "安卓服务练习":
+                    Intent intentService = new Intent(parent.getContext(), ServiceActivity.class);
+                    parent.getContext().startActivity(intentService);
+                    break;
                 case "安卓广播练习":
-                    Intent intent = new Intent(parent.getContext(), BroadcastActivity.class);
-                    parent.getContext().startActivity(intent);
+                    Intent intentBroadcast = new Intent(parent.getContext(), BroadcastActivity.class);
+                    parent.getContext().startActivity(intentBroadcast);
                     break;
                 case "安卓Fragment练习":
-                    Intent intent1 = new Intent(parent.getContext(), NewsActivity.class);
-                    parent.getContext().startActivity(intent1);
+                    Intent intentFragment = new Intent(parent.getContext(), NewsActivity.class);
+                    parent.getContext().startActivity(intentFragment);
                 default:
                     break;
             }

@@ -1,20 +1,11 @@
 package com.example.kmtest;
 
 import android.app.Activity;
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,11 +18,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.kmtest.serviceTest.MyService;
+
 import java.util.ArrayList;
 
 public class BookSelfFragment extends Fragment {
 
-    private MyService.DownloadBinder downloadBinder;
     private int refreshCount;
     private ArrayList<String> itemNames = new ArrayList<>();
 

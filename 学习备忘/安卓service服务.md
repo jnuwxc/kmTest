@@ -100,3 +100,77 @@ startForeground(ONGOING_NOTIFICATION_ID, notification);
 若想主动关闭前台service，直接使用stopService()即可。
 
 谨慎使用前台服务。
+
+### AIDL
+
+Android接口定义语言，简称AIDL。主要用于实现进程间通信(IPC)，在安卓系统中，进程之间是无法直接进行通信的，安卓提供了很多种方法实现进程通信，适用于不同的情况，如使用Binder、Messager、文件、ContentProvider等。
+
+**注意：**只有在需要不同应用的客户端通过 IPC 方式访问服务，并且希望在服务中进行多线程处理时，您才有必要使用 AIDL。如果您无需跨不同应用执行并发 IPC，则应通过实现 Binder 来创建接口；或者，如果您想执行 IPC，但*不*需要处理多线程，请使用 Messenger 来实现接口。
+
+#### 定义AIDL接口
+
+在src目录下新建.aidl文件，然后使用Java语言构建，但与Java语法有些不同，只支持以下基本类型
+
+```java
+int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString
+```
+
+以及以这些基本类型组合的list和map。
+
+构建应用时，SDK 工具便会在项目的 `gen/` 目录中生成 `IBinder` 接口文件。生成文件的名称与 `.aidl` 文件的名称保持一致，区别在于其使用 `.java` 扩展名。
+
+```java
+interface IMyAidlInterface {
+    int getPid();
+    
+    // 这个不用管，默认就有，提醒你只能用这几个基本类型
+    void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,
+            double aDouble, String aString);
+}
+```
+
+#### 实现接口
+
+当您构建应用时，Android SDK 工具会生成以 `.aidl` 文件命名的 `.java` 接口文件。生成的接口包含一个名为 `Stub` 的子类，该子类是其父接口的抽象实现，并且会声明 `.aidl` 文件中的所有方法。如要实现 `.aidl` 生成的接口，请扩展生成的 `Binder` 接口，并实现继承自 `.aidl` 文件的方法。
+
+```java
+public class AIDLService extends Service {
+    public AIDLService() {
+    }
+    @Override
+    public IBinder onBind(Intent intent) {
+        MyToast.toast("绑定成功");
+        return new MyBinder();
+    }
+    class MyBinder extends IMyAidlInterface.Stub{
+        @Override
+        public int getPid() throws RemoteException {
+            return Process.myPid();
+        }
+        @Override
+        public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
+        }
+    }
+}
+```
+
+#### 客户端使用
+
+在为服务实现接口后，您需要向客户端公开该接口，以便客户端进行绑定。如要为您的服务公开该接口，请扩展 `Service` 并实现 `onBind()`，从而返回实现生成的 `Stub` 的类实例（如前文所述）
+
+```java
+class AIDLConnection implements ServiceConnection{
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        myBinder = (AIDLService.MyBinder) IMyAidlInterface.Stub.asInterface(service);
+        isBindAIDLService = true;
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
+    }
+}
+```
+

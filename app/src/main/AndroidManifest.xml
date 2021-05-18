@@ -14,7 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KmTest">
-        <activity android:name=".fragmentTest.NewsActivity"></activity>
+        <service
+            android:name=".serviceTest.AIDLService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".serviceTest.ServiceActivity" />
+        <activity android:name=".fragmentTest.NewsActivity" />
         <activity android:name=".fragmentTest.NewsContentActivity" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".broadcast.BroadcastActivity" />
@@ -29,7 +35,7 @@
         </receiver>
 
         <service
-            android:name=".MyService"
+            android:name=".serviceTest.MyService"
             android:enabled="true"
             android:exported="true" />
 
