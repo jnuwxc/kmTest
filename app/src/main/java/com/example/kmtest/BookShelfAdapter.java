@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kmtest.androidui.UiActivity;
 import com.example.kmtest.broadcast.BroadcastActivity;
 import com.example.kmtest.fragmentTest.NewsActivity;
 import com.example.kmtest.serviceTest.ServiceActivity;
@@ -33,7 +34,8 @@ public class BookShelfAdapter extends RecyclerView.Adapter<BookShelfAdapter.View
             TextView textView = view.findViewById(R.id.itemText);
             switch (textView.getText().toString().trim()) {
                 case "安卓UI练习":
-                    Log.d(TAG, "onCreateViewHolder: 安卓UI练习" );
+                    Intent intentUi = new Intent(parent.getContext(), UiActivity.class);
+                    parent.getContext().startActivity(intentUi);
                     break;
                 case "安卓服务练习":
                     Intent intentService = new Intent(parent.getContext(), ServiceActivity.class);

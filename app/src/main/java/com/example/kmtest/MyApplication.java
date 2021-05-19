@@ -5,7 +5,7 @@ import android.app.Application;
 import android.content.Context;
 
 /**
- * application基类
+ * Application子类，进行一些全局设置
  * 静态字段：context，可用于全局获取上下文
  * @author wxc
  * @date 2021.5.17

@@ -14,10 +14,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KmTest">
+        <activity android:name=".androidui.LayoutTestActivity"></activity>
+        <activity android:name=".androidui.UiActivity" />
+        <activity android:name=".androidui.BasicViewActivity" />
+        <activity android:name=".androidui.ViewPagerActivity" />
+        <activity android:name=".androidui.TweenActivity" />
+        <activity android:name=".androidui.ListViewActivity" />
+
         <service
             android:name=".serviceTest.AIDLService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity android:name=".serviceTest.ServiceActivity" />
         <activity android:name=".fragmentTest.NewsActivity" />

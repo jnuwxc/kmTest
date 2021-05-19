@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".androidui.TweenActivity">
+
+    <Button
+        android:id="@+id/alpha_tween"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="透明度"
+        android:layout_margin="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <Button
+        android:id="@+id/scale_tween"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="缩放渐变"
+        android:layout_margin="4dp"
+        app:layout_constraintStart_toEndOf="@id/alpha_tween"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/tran_tween"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="位移渐变"
+        android:layout_margin="4dp"
+        app:layout_constraintStart_toEndOf="@id/scale_tween"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/rotate_tween"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="旋转渐变"
+        android:layout_margin="4dp"
+        app:layout_constraintStart_toEndOf="@id/tran_tween"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/set_tween"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="组合渐变"
+        android:layout_margin="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/alpha_tween"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/banana_pic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

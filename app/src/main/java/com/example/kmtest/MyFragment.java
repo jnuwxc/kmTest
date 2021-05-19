@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+/**
+ * @author wxc
+ * @date 2021.5.18
+ */
 public class MyFragment extends Fragment {
 
     @Override
@@ -17,7 +21,7 @@ public class MyFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_my, container, false);
         // Inflate the layout for this fragment
-        Button settingBtn = view.findViewById(R.id.setting);
+        Button settingBtn = view.findViewById(R.id.btnSetting);
         settingBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), SettingActivity.class);
             startActivity(intent);
