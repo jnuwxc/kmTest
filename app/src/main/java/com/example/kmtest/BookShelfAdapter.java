@@ -12,10 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kmtest.androidui.UiActivity;
 import com.example.kmtest.broadcast.BroadcastActivity;
 import com.example.kmtest.fragmentTest.NewsActivity;
+import com.example.kmtest.network.NetworkActivity;
 import com.example.kmtest.serviceTest.ServiceActivity;
 
 import java.util.ArrayList;
 
+/**
+ * 书架的recyclerView adapter
+ * @author wxc
+ * @date 2021.5.19
+ */
 public class BookShelfAdapter extends RecyclerView.Adapter<BookShelfAdapter.ViewHolder> {
 
     private static final String TAG = "BookShelfAdapter";
@@ -48,6 +54,11 @@ public class BookShelfAdapter extends RecyclerView.Adapter<BookShelfAdapter.View
                 case "安卓Fragment练习":
                     Intent intentFragment = new Intent(parent.getContext(), NewsActivity.class);
                     parent.getContext().startActivity(intentFragment);
+                    break;
+                case "network练习":
+                    Intent intentNetwork = new Intent(parent.getContext(), NetworkActivity.class);
+                    parent.getContext().startActivity(intentNetwork);
+                    break;
                 default:
                     break;
             }

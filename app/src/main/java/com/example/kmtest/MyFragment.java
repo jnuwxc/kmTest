@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 /**
+ * 我的页面fragment
  * @author wxc
  * @date 2021.5.18
  */
@@ -20,7 +21,6 @@ public class MyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_my, container, false);
-        // Inflate the layout for this fragment
         Button settingBtn = view.findViewById(R.id.btnSetting);
         settingBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), SettingActivity.class);

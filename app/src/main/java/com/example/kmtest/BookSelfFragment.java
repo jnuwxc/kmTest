@@ -22,18 +22,23 @@ import com.example.kmtest.serviceTest.MyService;
 
 import java.util.ArrayList;
 
+
+/**
+ * 书架模块fragment
+ * @author wxc
+ * @date 2021.5.19
+ */
 public class BookSelfFragment extends Fragment {
 
+    //下拉刷新计数
     private int refreshCount;
     private ArrayList<String> itemNames = new ArrayList<>();
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = getLayoutInflater().inflate(R.layout.fragment_book_shelf, container, false);
         Activity activity = getActivity();
-
+        // TODO: 2021/5/19 toolbar及菜单栏 
         Toolbar toolbar = view.findViewById(R.id.bookShelfToolbar);
         toolbar.inflateMenu(R.menu.main_items);
         toolbar.setOnMenuItemClickListener(item -> {
@@ -54,7 +59,7 @@ public class BookSelfFragment extends Fragment {
                     return false;
             }
         });
-
+        // TODO: 2021/5/19 下拉刷新 
         refreshCount = 0;
         TextView refreshText = view.findViewById(R.id.refreshText);
         SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.mainRefresh);
@@ -64,7 +69,7 @@ public class BookSelfFragment extends Fragment {
             refreshText.setText(string);
             swipeRefreshLayout.setRefreshing(false);
         });
-
+        // TODO: 2021/5/19 recyclerView设置 
         initItemNames();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(activity);
         RecyclerView recyclerView = view.findViewById(R.id.bookShelfRecyclerView);
@@ -73,13 +78,16 @@ public class BookSelfFragment extends Fragment {
         return view;
     }
 
+    /**
+     * 填充列表
+     */
     private void initItemNames() {
         itemNames.add("安卓UI练习");
         itemNames.add("安卓activity练习");
         itemNames.add("安卓服务练习");
         itemNames.add("安卓广播练习");
         itemNames.add("安卓Fragment练习");
-        itemNames.add("测试");
+        itemNames.add("network练习");
         itemNames.add("测试");
         itemNames.add("测试");
         itemNames.add("测试");

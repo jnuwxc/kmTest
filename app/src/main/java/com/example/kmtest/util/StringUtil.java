@@ -1,12 +1,7 @@
 package com.example.kmtest.util;
 
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * 字符串静态工具类，封装了字符串常用方法
