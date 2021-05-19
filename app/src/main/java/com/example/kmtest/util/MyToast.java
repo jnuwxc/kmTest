@@ -1,8 +1,10 @@
-package com.example.kmtest;
+package com.example.kmtest.util;
 
 import android.os.Build;
 import android.view.Gravity;
 import android.widget.Toast;
+
+import com.example.kmtest.MyApplication;
 
 /**
  * 全局使用Toast

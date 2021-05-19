@@ -7,7 +7,7 @@ import android.os.Process;
 import android.os.RemoteException;
 
 import com.example.kmtest.IMyAidlInterface;
-import com.example.kmtest.MyToast;
+import com.example.kmtest.util.MyToast;
 
 public class AIDLService extends Service {
     public AIDLService() {

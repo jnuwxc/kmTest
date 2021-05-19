@@ -2,23 +2,16 @@ package com.example.kmtest.androidui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import com.example.kmtest.MyToast;
+import com.example.kmtest.util.MyToast;
 import com.example.kmtest.R;
 import com.example.kmtest.databinding.ActivityLayoutTestBinding;
-import com.example.kmtest.databinding.ActivitySettingBinding;
-
-import org.w3c.dom.Text;
 
 public class LayoutTestActivity extends AppCompatActivity {
 

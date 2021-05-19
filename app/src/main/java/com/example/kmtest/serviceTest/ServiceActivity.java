@@ -9,14 +9,11 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.util.Log;
 import android.view.View;
 import android.os.Process;
 import com.example.kmtest.IMyAidlInterface;
-import com.example.kmtest.MyToast;
-import com.example.kmtest.R;
+import com.example.kmtest.util.MyToast;
 import com.example.kmtest.databinding.ActivityServiceBinding;
-import com.example.kmtest.databinding.ActivitySettingBinding;
 
 public class ServiceActivity extends AppCompatActivity {
 

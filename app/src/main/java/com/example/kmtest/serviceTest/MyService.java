@@ -10,12 +10,11 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
 import com.example.kmtest.MainActivity;
-import com.example.kmtest.MyToast;
+import com.example.kmtest.util.MyToast;
 
 public class MyService extends Service {
 

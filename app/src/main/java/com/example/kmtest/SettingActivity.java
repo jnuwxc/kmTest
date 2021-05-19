@@ -1,22 +1,16 @@
 package com.example.kmtest;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.ViewCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowInsetsController;
-import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.kmtest.databinding.ActivitySettingBinding;
+import com.example.kmtest.util.MyToast;
 
 /**
  * 设置模块的Activity
