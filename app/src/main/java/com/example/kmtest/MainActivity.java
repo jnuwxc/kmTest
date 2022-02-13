@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+    private String test = "wxc";
+
     /**
      * activity创建的回调，处理UI的初始化工作
      * @param savedInstanceState
